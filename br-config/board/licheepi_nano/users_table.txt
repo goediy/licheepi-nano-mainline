@@ -1,0 +1,2 @@
+# <username> <uid> <group> <gid> <password> <home> <shell> <groups> <comment>
+lichee       -1    lichee  -1    =pi /home/lichee /bin/bash sudo,root

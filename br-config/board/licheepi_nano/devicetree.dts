@@ -1,0 +1,78 @@
+/dts-v1/;
+#include "suniv-f1c100s-licheepi-nano.dts"
+// #include "allwinner/suniv-f1c100s-licheepi-nano.dts"
+
+/ {
+	model = "Lichee Pi Nano Custom";
+};
+
+
+&pio {
+	i2c0_pins: i2c0 {
+		pins = "PE11", "PE12";
+		function = "i2c0";
+	};
+
+/*	uart1_pa_pins: uart1-pa-pins {
+		pins = "PA2", "PA3";
+		function = "uart1";
+	};*/
+
+	uart2_pa_pins: uart2-pa-pins {
+		pins = "PE8", "PE7";
+		function = "uart2";
+	};
+
+        spi1_pins: spi1-pins{
+                   pins = "PA2","PA0","PA3","PA1";
+                   function = "spi1";
+        };
+
+        spi0_pins: spi0-pins {
+                   pins = "PC0", "PC1", "PC2", "PC3";
+                   function = "spi0";
+        };
+};
+
+
+&i2c0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c0_pins>;
+	status = "okay";
+
+/*	pcf8574a: pcf8574a@20 {
+		compatible = "nxp,pcf8574a";
+		reg = <0x20>;
+		gpio-controller;            
+		#gpio-cells = <2>;
+	};*/
+};
+
+
+/*&uart1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart1_pa_pins>;
+	status = "okay";
+};*/
+
+&uart2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart2_pa_pins>;
+	status = "okay";
+};
+
+&spi0 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&spi0_pins>;
+        status = "okay";
+};
+
+&spi1 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&spi1_pins>;
+        status = "okay";
+};
+
+&wdt {
+	status = "okay";
+};

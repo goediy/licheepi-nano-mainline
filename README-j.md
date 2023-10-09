@@ -95,7 +95,7 @@ sudo iptables -A FORWARD -i usb0 -o eth0 -j ACCEPT
 ```
 - iptables設定の永続化
 ```sh
-sudo /sbin/iptables-save > /etc/iptables/rules.v4
+sudo netfilter-persistent save
 ```
 
 ## Buildrootカスタマイズの手順

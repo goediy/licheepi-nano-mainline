@@ -96,7 +96,7 @@ sudo iptables -A FORWARD -i usb0 -o eth0 -j ACCEPT
 ```
 - Persisting iptables settings
 ```sh
-sudo /sbin/iptables-save > /etc/iptables/rules.v4
+sudo netfilter-persistent save
 ```
 
 ## Buildroot customization steps

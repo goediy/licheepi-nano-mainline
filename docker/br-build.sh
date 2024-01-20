@@ -7,8 +7,9 @@ BR_ROOT=buildroot-${BR_RELEASE}
 
 cd ~/work/
 if [ ! -e ${PACKAGE} ]; then
-    echo "Downloading ..."
-    wget -q -c http://buildroot.org/downloads/${PACKAGE}
+    DOWNLOAD_URL=https://buildroot.org/downloads/${PACKAGE}
+    echo "Downloading : ${DOWNLOAD_URL}"
+    wget -q -c ${DOWNLOAD_URL}
 fi
 if [ ! -d ${BR_ROOT} ]; then
     echo "Extracting ..."

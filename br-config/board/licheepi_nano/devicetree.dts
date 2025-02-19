@@ -1,6 +1,6 @@
 /dts-v1/;
-#include "suniv-f1c100s-licheepi-nano.dts"
-// #include "allwinner/suniv-f1c100s-licheepi-nano.dts"
+// #include "suniv-f1c100s-licheepi-nano.dts"
+#include "allwinner/suniv-f1c100s-licheepi-nano.dts"
 
 / {
 	model = "Lichee Pi Nano Custom";

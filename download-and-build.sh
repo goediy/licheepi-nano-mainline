@@ -1,7 +1,7 @@
 #!/bin/bash
-docker run --ipc=host --rm -it \
-  -v $PWD/:/home/$USER/work \
+docker run --user $(id -u) --ipc=host --rm -it \
+  -v $PWD/:/workdir/work \
   br-build \
-  /home/$USER/br-build.sh
+  /workdir/br-build.sh
 
 

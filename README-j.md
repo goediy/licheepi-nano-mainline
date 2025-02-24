@@ -1,6 +1,6 @@
 # mainlineカーネルを使用したLichee Pi Nanoブート可能Linuxイメージ
 
-最近F1C100sチップ向けmainlineカーネルの開発が進み、SDカードサイズの極小シングルボードコンピュータLichee Pi Nanoで動作するブート可能イメージを、カスタムコードを必要とせずに作る事に成功しました。
+SDカードサイズの極小シングルボードコンピュータLichee Pi Nanoで動作するブート可能イメージ作成環境です。イメージ作成にはBuildroot2024.02を利用しております。
 
 本リポジトリには、イメージの作成に必要なLichee Pi Nano用のBuildroot設定ファイルと、Dockerによる仮想ビルド環境構築設定ファイル、そしてコマンドの起動をまとめたシェルスクリプトなどブート可能イメージ作成に必要なファイル群を全て含めました。これによりほぼ全自動にて起動可能なmicroSDカードイメージを作成可能です。
 
@@ -112,7 +112,7 @@ docker run --ipc=host --rm -it -v $PWD/:/home/$USER/work br-build /usr/bin/bash
 ```
 2. (Dockerコンテナの中で)Buildrootカスタマイズとビルド実行
 ```sh
-cd work/buildroot-2023.02.4
+cd work/buildroot-2024.02.9
 make menuconfig
 make
 ```
@@ -136,15 +136,17 @@ I2C接続の1602ディスプレイにシステム時刻を表示するだけの�
 
 ## 各種バージョンについて
 
-以下の表の通りです。
+[F1C100sのUSB正式対応がバージョン6.4〜](https://linux-sunxi.org/Linux_mainlining_effort)となっており、U-Bootに関してもF1C100s対応は2023.07.02以降となっています。
 
-|Buildroot|Linux|U-Boot|
-|:--:|:--:|:--:|
-|2023.02.4|6.4.16|2023.07.02|
+Buildroot2024.02ではデフォルト設定でLTSカーネルの6.6が選択され、U-Bootも2024.01が選択されるため、カスタム設定無しでF1C100s対応が可能になりました。
 
-Buildroot2023.02のデフォルトではLinuxバージョン6.1系を使う設定ですが、[F1C100sのUSB正式対応がバージョン6.4〜](https://linux-sunxi.org/Linux_mainlining_effort)となっており、6.4系のEOL版である6.4.16を指定しております。
+下の表のように以前公開した環境もタグを打って残してありますので、必要に応じて活用して下さい。
 
-U-Bootに関してもBuildrootデフォルト指定バージョン2022.04はF1C100s未対応のため、2023.07.02を指定しております。
+|Tag|Buildroot|Linux|U-Boot|
+|:--:|:--:|:--:|:--:|
+|v6.6_br2024.02|2024.02.9|6.6.63|2024.01|
+|[v6.4.16_br2023.02](https://github.com/goediy/licheepi-nano-mainline/tree/v6.4.16_br2023.02)|2023.02.4|6.4.16|2023.07.02|
+
 
 ## 参考にしたプロジェクト
 

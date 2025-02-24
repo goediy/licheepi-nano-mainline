@@ -1,6 +1,6 @@
 # Lichee Pi Nano bootable Linux image using mainline kernel
 
-Thanks to the progress of mainline kernel development for F1C100s chip, creating a bootable image that runs on Lichee Pi Nano, tiny single-board computer in SD card size, has succeeded without using custom code.
+This is a bootable image creation environment that runs on the Lichee Pi Nano, a tiny single-board computer the size of an SD card. Buildroot 2024.02 is used to create the image.
 
 This repository contains all the necessary files to create bootable image, such as Buildroot configuration files for Lichee Pi Nano, Docker virtual build environment configuration files, and shell scripts that gether the related commands. This allows you to create a bootable microSD card image almost completely automatically.
 
@@ -138,17 +138,18 @@ The sample code is a simple one that just displays system time on a 1602 display
 
 ## Versions
 
-The versions are shown in table below.
 
-|Buildroot|Linux|U-Boot|
-|:--:|:--:|:--:|
-|2023.02.4|6.4.16|2023.07.02|
+[Official USB support for the F1C100s begins with version 6.4](https://linux-sunxi.org/Linux_mainlining_effort), and U-Boot support for the F1C100s is from 2023.07.02 onwards.
 
+In Buildroot 2024.02, the LTS kernel 6.6 is selected by default, and U-Boot 2024.01 is also selected, making it compatible with the F1C100s without any custom settings.
 
-By default, Buildroot2023.02 is set to use Linux version 6.1 series, but [USB official support for F1C100s is from version 6.4](https://linux-sunxi.org/Linux_mainlining_effort). Therefore Linux version 6.4.16 , EOL version of 6.4 series, is specified.
+As shown in the table below, previously published environments have been kept with tags, so please use them as necessary.
 
+|Tag|Buildroot|Linux|U-Boot|
+|:--:|:--:|:--:|:--:|
+|v6.6_br2024.02|2024.02.9|6.6.63|2024.01|
+|[v6.4.16_br2023.02](https://github.com/goediy/licheepi-nano-mainline/tree/v6.4.16_br2023.02)|2023.02.4|6.4.16|2023.07.02|
 
-Regarding U-Boot, Buildroot default specified version 2022.04 does not support F1C100s, so 2023.07.02 is specified.
 
 ## Projects referenced
 

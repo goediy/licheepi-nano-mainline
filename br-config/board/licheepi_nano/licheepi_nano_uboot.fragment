@@ -1,0 +1,4 @@
+# U-Boot 2026.01 defaults to reserving 16 MiB for its runtime stack.
+# On this 32 MiB board that makes normal boot load addresses unavailable to
+# the LMB allocator. One MiB is sufficient for this non-EFI configuration.
+CONFIG_STACK_SIZE=0x100000

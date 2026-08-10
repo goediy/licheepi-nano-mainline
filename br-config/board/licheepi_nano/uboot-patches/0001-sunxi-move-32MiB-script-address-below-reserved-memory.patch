@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: EleDIY <noreply@example.com>
+Date: Mon, 10 Aug 2026 00:00:00 +0000
+Subject: [PATCH] sunxi: move 32MiB script address below reserved memory
+
+On the 32 MiB Lichee Pi Nano, U-Boot 2026.01 relocates into the area
+containing the default script address at SDRAM + 0x1d40000. The LMB
+check consequently rejects boot.scr before it can be executed.
+
+Place the small boot script at SDRAM + 0x0f00000. This is below the
+relocated U-Boot reservation and does not overlap this board's kernel
+or devicetree load addresses.
+---
+ include/configs/sunxi-common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/include/configs/sunxi-common.h
++++ b/include/configs/sunxi-common.h
+@@ -124,7 +124,7 @@
+ #define BOOTM_SIZE        __stringify(0x1700000)
+ #define KERNEL_ADDR_R     __stringify(SDRAM_OFFSET(1000000))
+ #define FDT_ADDR_R        __stringify(SDRAM_OFFSET(1d50000))
+-#define SCRIPT_ADDR_R     __stringify(SDRAM_OFFSET(1d40000))
++#define SCRIPT_ADDR_R     __stringify(SDRAM_OFFSET(0f00000))
+ #define PXEFILE_ADDR_R    __stringify(SDRAM_OFFSET(1d00000))
+ #define FDTOVERLAY_ADDR_R __stringify(SDRAM_OFFSET(1d20000))
+ #define RAMDISK_ADDR_R    __stringify(SDRAM_OFFSET(1800000))
+--
+2.39.5

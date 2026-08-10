@@ -1,6 +1,6 @@
 # Lichee Pi Nano bootable Linux image using mainline kernel
 
-This is a bootable image creation environment that runs on the Lichee Pi Nano, a tiny single-board computer the size of an SD card. Buildroot 2024.02 is used to create the image.
+This is a bootable image creation environment that runs on the Lichee Pi Nano, a tiny single-board computer the size of an SD card. Buildroot 2026.02 is used to create the image.
 
 This repository contains all the necessary files to create bootable image, such as Buildroot configuration files for Lichee Pi Nano, Docker virtual build environment configuration files, and shell scripts that gether the related commands. This allows you to create a bootable microSD card image almost completely automatically.
 
@@ -113,7 +113,7 @@ docker run --ipc=host --rm -it -v $PWD/:/home/$USER/work br-build /usr/bin/bash
 ```
 2. Buildroot customization and building (in the Docker container)
 ```sh
-cd work/buildroot-2023.02.4
+cd work/buildroot-2026.02.2
 make menuconfig
 make
 ```
@@ -141,12 +141,13 @@ The sample code is a simple one that just displays system time on a 1602 display
 
 [Official USB support for the F1C100s begins with version 6.4](https://linux-sunxi.org/Linux_mainlining_effort), and U-Boot support for the F1C100s is from 2023.07.02 onwards.
 
-In Buildroot 2024.02, the LTS kernel 6.6 is selected by default, and U-Boot 2024.01 is also selected, making it compatible with the F1C100s without any custom settings.
+The Buildroot 2026.02 configuration uses Linux 6.19.14 and U-Boot 2026.01 selected by Buildroot, while preserving the Lichee Pi Nano board configuration.
 
 As shown in the table below, previously published environments have been kept with tags, so please use them as necessary.
 
 |Tag|Buildroot|Linux|U-Boot|
 |:--:|:--:|:--:|:--:|
+|v6.19_br2026.02|2026.02.2|6.19.14|2026.01|
 |v6.6_br2024.02|2024.02.9|6.6.63|2024.01|
 |[v6.4.16_br2023.02](https://github.com/goediy/licheepi-nano-mainline/tree/v6.4.16_br2023.02)|2023.02.4|6.4.16|2023.07.02|
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BR_RELEASE='2024.02.9'
+BR_RELEASE='2026.02.2'
 
 PACKAGE=buildroot-${BR_RELEASE}.tar.gz
 BR_ROOT=buildroot-${BR_RELEASE}
